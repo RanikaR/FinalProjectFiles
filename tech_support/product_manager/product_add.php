@@ -4,28 +4,24 @@
     <form action="index.php" method="post" id="add_product_form">
         <input type="hidden" name="action" value="add_product">
 
-        <label>Category:</label>
-        <select name="category_id">
-        <?php foreach ( $categories as $category ) : ?>
-            <option value="<?php echo $category['categoryID']; ?>">
-                <?php echo $category['categoryName']; ?>
-            </option>
-        <?php endforeach; ?>
-        </select>
         <br>
 
         <label>Code:</label>
-        <input type="text" name="code" />
+        <input type="text" name="product_code" />
         <br>
 
         <label>Name:</label>
         <input type="text" name="name" />
         <br>
 
-        <label>List Price:</label>
-        <input type="text" name="price" />
+        <label>Version:</label>
+        <input type="text" name="version" />
         <br>
-
+	
+	<label>Release Date:</label>
+        <input type="text" name="releaseDate" />
+        <br>
+	
         <label>&nbsp;</label>
         <input type="submit" value="Add Product" />
         <br>

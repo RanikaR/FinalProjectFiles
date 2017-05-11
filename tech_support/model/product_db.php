@@ -1,11 +1,9 @@
 <?php
-function get_products_by_category($category_id) {
+function get_products() {
     global $db;
-    $query = 'SELECT * FROM products
-              WHERE products.categoryID = :category_id
-              ORDER BY productID';
+    $query = 'SELECT * FROM tech_products
+              ORDER BY productCode';
     $statement = $db->prepare($query);
-    $statement->bindValue(":category_id", $category_id);
     $statement->execute();
     $products = $statement->fetchAll();
     $statement->closeCursor();
@@ -14,10 +12,10 @@ function get_products_by_category($category_id) {
 
 function get_product($product_id) {
     global $db;
-    $query = 'SELECT * FROM products
-              WHERE productID = :product_id';
+    $query = 'SELECT * FROM tech_products
+              WHERE productCode = :product_code';
     $statement = $db->prepare($query);
-    $statement->bindValue(":product_id", $product_id);
+    $statement->bindValue(":product_code", $product_code);
     $statement->execute();
     $product = $statement->fetch();
     $statement->closeCursor();
@@ -26,25 +24,25 @@ function get_product($product_id) {
 
 function delete_product($product_id) {
     global $db;
-    $query = 'DELETE FROM products
-              WHERE productID = :product_id';
+    $query = 'DELETE FROM tech_products
+              WHERE productCode = :product_code';
     $statement = $db->prepare($query);
-    $statement->bindValue(':product_id', $product_id);
+    $statement->bindValue(':product_code', $product_code);
     $statement->execute();
     $statement->closeCursor();
 }
 
-function add_product($category_id, $code, $name, $price) {
+function add_product($product_code, $name, $version, $releaseDate) {
     global $db;
-    $query = 'INSERT INTO products
-                 (categoryID, productCode, productName, listPrice)
+    $query = 'INSERT INTO tech_products
+                 (productCode, name, version, releaseDate)
               VALUES
-                 (:category_id, :code, :name, :price)';
+                 (:product_code, :name, :version, :releaseDate)';
     $statement = $db->prepare($query);
-    $statement->bindValue(':category_id', $category_id);
+    $statement->bindValue(':productCode', $product_code);
     $statement->bindValue(':code', $code);
     $statement->bindValue(':name', $name);
-    $statement->bindValue(':price', $price);
+    $statement->bindValue(':releaseDate', $releaseDate);
     $statement->execute();
     $statement->closeCursor();
 }
