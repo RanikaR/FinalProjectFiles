@@ -21,15 +21,17 @@ if ($action == 'list_products') {
     } else { 
         delete_product($product_code);
     }
+
 } else if ($action == 'show_add_form') {
     $products = get_products();
     include('product_add.php');    
+
 } else if ($action == 'add_product') {
     $product_code = filter_input(INPUT_POST, 'product_code');
     $name = filter_input(INPUT_POST, 'name');
     $version = filter_input(INPUT_POST, 'version');
     $releaseDate = filter_input(INPUT_POST, 'releaseDate');
-    if ($product_code == NULL || $product_code == FALSE || $name == NULL || $name == FALSE || $version == NULL) {
+    if ($product_code == NULL || $product_code == FALSE || $name == NULL || $name == FALSE || $version == NULL || $version == FALSE || $releaseDate == NULL || $releaseDate == FALSE) {
         $error = "Invalid product data. Check all fields and try again.";
         include('../errors/error.php');
     } else { 
