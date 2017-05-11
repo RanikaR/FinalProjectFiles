@@ -14,7 +14,7 @@ if ($action == 'list_technicians') {
 	$technicians = get_technicians();
 	include('technician_list.php'); }
     else if ($action == 'delete_technician') {
-	$tech_id = filter_input(INPUT_POST, 'tech_id', 			   FILTER_VALIDATE_INT);
+	$tech_id = filter_input(INPUT_POST, 'tech_id', FILTER_VALIDATE_INT);
 	if ($tech_id == NULL || $tech_id == FALSE) {
 	    $error = "Missing or incorrect technician ID.";
 	    include('..errors/error.php');
