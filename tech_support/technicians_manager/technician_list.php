@@ -12,14 +12,16 @@
 		    <th>Phone</th>
 		    <th>Password</th>
 	    </tr>
-	    <?php foreach ($technicians as $technician) ;?>
+     
+ 	   <?php foreach ($technicians as $technician) : ?>
 	    <tr>
-		<td><?php echo $technican['firstName']; ?></td>
-		<td><?php echo $technican['lastName']; ?></td>
-		<td><?php echo $technican['email']; ?></td>
-		<td><?php echo $technican['phone']; ?></td>
-		<td><?php echo $technican['password']; ?></td>
-		<td><form action="." method="post">
+		<td><?php echo $technician['firstName']; ?></td>
+		<td><?php echo $technician['lastName']; ?></td>
+		<td><?php echo $technician['email']; ?></td>
+		<td><?php echo $technician['phone']; ?></td>
+		<td><?php echo $technician['password']; ?></td>
+		
+    <td><form action="." method="post">
 		    <input type="hidden" name="action"
 			   value="delete_technician">
 		    <input type="hidden" name="first_name"
@@ -32,9 +34,12 @@
 			   value="<?php echo $technician['phone']; ?>">
 		    <input type="hidden" name="password"
 			   value="<?php echo $technician['password']; ?>">
+      <input type="submit" value="Delete">
+      </form></td>
+      </tr>
+      <?php endforeach; ?>
 </table>
 <p><a href="?action=show_add_form">Add Technician</a></p>    
 </section>
-
 </main>
 <?php include '../view/footer.php';?>
