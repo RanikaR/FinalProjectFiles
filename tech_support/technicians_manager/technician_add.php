@@ -1,42 +1,35 @@
 <?php include '../view/header.php'; ?>
 <main>
-    <h1>Add Product</h1>
+    <h1>Add Technician</h1>
     <form action="index.php" method="post" id="add_technician_form">
         <input type="hidden" name="action" value="add_technician">
-
-        <br>
     <div>
-        <label>First Name</label>
-        <input type="text" name="first_name" />
-        <br>
+        <label>First Name: </label>
+        <input type="text" name="first_name" />       
     </div>
-	
+    <br>
     <div>
-        <label>Last Name</label>
+        <label>Last Name: </label>
         <input type="text" name="last_name" />
-        <br>
     </div>
-
+    <br>
     <div>
-        <label>Email</label>
+        <label>Email: </label>
         <input type="text" name="email" />
-        <br>
     </div>
-
+    <br>
     <div>
-        <label>Phone</label>
+        <label>Phone: </label>
         <input type="text" name="phone" />
-	      <br>
     </div>
-    
+    <br>
     <div>
-	       <label>Password</label>
+	       <label>Password: </label>
          <input type="text" name="password" />
-	       <br>
     </div>
-    
+    <br>
         <label>&nbsp;</label>
-        <input type="submit" value="Add Product" />
+        <input type="submit" value="Add Technician" />
         <br>
     </form>
     <p class="last_paragraph">

@@ -14,12 +14,20 @@ if ($action == 'list_customers') {
 
 } else if ($action == 'show_add_form') {
     $products = get_products();
-    include('product_add.php');    
-} else if ($action == 'add_product') {
-    $product_code = filter_input(INPUT_POST, 'product_code');
+    include('product_add.php');  
+      
+} else if ($action == 'update_customer') {
+    $customer = update_customer();
     $name = filter_input(INPUT_POST, 'name');
     $version = filter_input(INPUT_POST, 'version');
     $releaseDate = filter_input(INPUT_POST, 'releaseDate');
+    $name = filter_input(INPUT_POST, 'name');
+    $name = filter_input(INPUT_POST, 'name');
+    $name = filter_input(INPUT_POST, 'name');
+    $name = filter_input(INPUT_POST, 'name');
+    $name = filter_input(INPUT_POST, 'name');
+    $name = filter_input(INPUT_POST, 'name');
+    $name = filter_input(INPUT_POST, 'name');
     if ($product_code == NULL || $product_code == FALSE || $name == NULL || $name == FALSE || $version == NULL || $version == FALSE || $releaseDate == NULL || $releaseDate == FALSE) {
         $error = "Invalid product data. Check all fields and try again.";
         include('../errors/error.php');
@@ -27,6 +35,7 @@ if ($action == 'list_customers') {
         add_product($product_code, $name, $version, $releaseDate);
 	header("Location: .");
     }
+    
 } else if ($action == 'list_products') {
     $products = get_products();
     include('product_list.php');

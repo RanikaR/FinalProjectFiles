@@ -23,7 +23,7 @@ if ($action == 'list_technicians') {
 	}
 
 } else if ($action == 'show_add_form') {
-	$technicians = get_technicians();
+	$technicians = add_technician();
 	include('technician_add.php');
 
 } else if ($action == 'add_technician') {

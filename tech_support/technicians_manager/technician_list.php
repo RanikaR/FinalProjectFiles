@@ -11,9 +11,8 @@
 		    <th>E-mail</th>
 		    <th>Phone</th>
 		    <th>Password</th>
-		    <th>&nbsp;</th>
 	    </tr>
-	    <?php foreach ($technicians as $technician) :?>
+	    <?php foreach ($technicians as $technician) ;?>
 	    <tr>
 		<td><?php echo $technican['firstName']; ?></td>
 		<td><?php echo $technican['lastName']; ?></td>
@@ -33,6 +32,9 @@
 			   value="<?php echo $technician['phone']; ?>">
 		    <input type="hidden" name="password"
 			   value="<?php echo $technician['password']; ?>">
+</table>
+<p><a href="?action=show_add_form">Add Technician</a></p>    
+</section>
 
 </main>
 <?php include '../view/footer.php';?>
