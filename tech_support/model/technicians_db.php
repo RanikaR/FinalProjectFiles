@@ -38,6 +38,10 @@ function delete_technician() {
 //Add technician to database
 function add_technician($tech_id, $first_name, $last_name, $email, $phone, $password) {
 	global $db;
+  $query = 'INSERT INTO technicians
+                 (techID, firstName, lastName, email, phone, password)
+              VALUES
+                 (:techID, :firstName, :lastName, :email, :phone, :password)';
 	$statement = $db->prepare($query);
 	$statement -> bindValue(':techID', $tech_id);
 	$statement -> bindValue(':firstName', $first_name);

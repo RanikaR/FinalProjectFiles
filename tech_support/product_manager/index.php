@@ -1,7 +1,6 @@
 <?php
 require('../model/database.php');
 require('../model/product_db.php');
-
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -21,11 +20,9 @@ if ($action == 'list_products') {
     } else { 
         delete_product($product_code);
     }
-
 } else if ($action == 'show_add_form') {
     $products = get_products();
     include('product_add.php');    
-
 } else if ($action == 'add_product') {
     $product_code = filter_input(INPUT_POST, 'product_code');
     $name = filter_input(INPUT_POST, 'name');
@@ -41,7 +38,6 @@ if ($action == 'list_products') {
 } else if ($action == 'list_products') {
     $products = get_products();
     include('product_list.php');
-
 }
 ?>
 

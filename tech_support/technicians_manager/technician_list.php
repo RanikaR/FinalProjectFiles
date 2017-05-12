@@ -6,12 +6,12 @@
 	<!-- Displays Table of Technicians -->
 	<table>
 	    <tr>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>E-mail</th>
-		<th>Phone</th>
-		<th>Password</th>
-		<th>&nbsp;</th>
+		    <th>First Name</th>
+		    <th>Last Name</th>
+		    <th>E-mail</th>
+		    <th>Phone</th>
+		    <th>Password</th>
+		    <th>&nbsp;</th>
 	    </tr>
 	    <?php foreach ($technicians as $technician) :?>
 	    <tr>
@@ -23,9 +23,9 @@
 		<td><form action="." method="post">
 		    <input type="hidden" name="action"
 			   value="delete_technician">
-		    <input type="hidden" name="firstName"
+		    <input type="hidden" name="first_name"
 			   value="<?php echo $technician['firstName']; ?>">
-		    <input type="hidden" name="lastName"
+		    <input type="hidden" name="last_name"
 			   value="<?php echo $technician['lastName']; ?>">
 		    <input type="hidden" name="email"
 			   value="<?php echo $technician['email']; ?>">
