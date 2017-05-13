@@ -4,10 +4,10 @@ require('../model/technicians_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 
-if ($action === NULL) {
+if ($action == NULL) {
 
     $action = filter_input(INPUT_GET, 'action');
-    if ($action === NULL) {
+    if ($action == NULL) {
         $action = 'list_technicians';
     }
 }
@@ -18,12 +18,16 @@ if ($action == 'list_technicians'){
 }
 
 else if ($action == 'delete_tech'){
-    $techID = filter_input(INPUT_POST, 'techID');
+    $techID = filter_input(INPUT_POST, 'techID', FILTER_VALIDATE_INT);
+    if ($techID == NULL || $techID == FALSE) {
+        $error = "Missing or incorrect product code.";
+        include('../errors/error.php');
+    } else {
       delete_tech($techID);
       header("Location: .");
     }
 
- else if ($action == 'show_add_form'){
+} else if ($action == 'show_add_form'){
     $technicians = get_technician();
     include('technician_add.php');
 }
