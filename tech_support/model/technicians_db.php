@@ -25,7 +25,7 @@ function get_technician($tech_id) {
 }
 
 //Delete technician from database
-function delete_technician() {
+function delete_technician($tech_id) {
 	global $db;
 	$query = 'DELETE FROM technicians
 		  WHERE techID = :techID';
@@ -36,14 +36,13 @@ function delete_technician() {
 }
 
 //Add technician to database
-function add_technician($tech_id, $first_name, $last_name, $email, $phone, $password) {
+function add_technician($first_name, $last_name, $email, $phone, $password) {
 	global $db;
   $query = 'INSERT INTO technicians
-                 (techID, firstName, lastName, email, phone, password)
+                 (firstName, lastName, email, phone, password)
               VALUES
-                 (:techID, :firstName, :lastName, :email, :phone, :password)';
+                 (:firstName, :lastName, :email, :phone, :password)';
 	$statement = $db->prepare($query);
-	$statement -> bindValue(':techID', $tech_id);
 	$statement -> bindValue(':firstName', $first_name);
 	$statement -> bindValue(':lastName', $last_name);
 	$statement -> bindValue(':email', $email);

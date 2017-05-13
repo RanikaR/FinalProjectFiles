@@ -1,90 +1,46 @@
 <?php include '../view/header.php'; ?>
 <main>
-    <h1>View/Update Customer</h1>
-    
-        <form method='post' action='index.php' id='aligned'>
-        <input type='hidden' name='action' value='update_customer'>
-        <input type='hidden' name='customerID'
-               value='1002'
-        
-        <div>
-            <label for="firstName">First Name:</label>
-            <input type="text" name="firstName"
-                   value='<?php echo $customer['firstName']; ?>'/>
-        </div>
+<h1>Customer Search</h1>
+    <form action="index.php" method="post" id="search_customer_form">
+        <input type="hidden" name="action" value="search_customer">
+<div>
+        <label>Last Name:</label>
+        <input type="text" name="lastName" />
         <br>
-        
-        <div>
-            <label for="lastName">Last Name:</label>
-            <input type="text" name="lastName"
-                   value='<?php echo $customer['lastName']; ?>'/>
-        </div>
+    </div>
+        <input type="submit" value="Search" />
         <br>
-        
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" name="address"
-                   value='<?php echo $customer['address']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="city">City:</label>
-            <input type="text" name="city"
-                   value='<?php echo $customer['city']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="state">State:</label>
-            <input type="text" name="state"
-                   value='<?php echo $customer['state']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="postalCode">Postal Code:</label>
-            <input type="text" name="postalCode"
-                   value='<?php echo $customer['postalCode']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="countryCode">Country Code:</label>
-            <input type="text" name="countryCode"
-                   value='<?php echo $customer['countryCode']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="text" name="phone"
-                   value='<?php echo $customer['phone']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="email">Email:</label>
-            <input type="text" name="email"
-                   value='<?php echo $customer['email']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label for="password">Password:</label>
-            <input type="text" name="password"
-                   value='<?php echo $customer['password']; ?>'/>
-        </div>
-        <br>
-        
-        <div>
-            <label></label>
-            <input type='submit' value='Update Customer'>
-        </div>
-    </form>
-    
-    <a href='.?action=customer_list'>Search Customers</a>
+</form>
 
+<h1>Results</h1>
+<p>Enter a last name to see the customers.</p>
+<?php print_r($customer); ?>
+
+<table>
+<tr>
+  <th>Name</th>
+  <th>E-mail</th>
+  <th>City</th>
+</tr>
+<?php foreach($customers as $customer) : ?>
+  <tr>
+      <td><?php echo $customer['firstName']; ?></td>
+      <td><?php echo $customer['email']; ?></td>
+      <td><?php echo $customer['city']; ?></td>
+      <td><form action="." method="post">
+      <input type="hidden" name="action"
+        value="search_customer">
+      <input type="hidden" name="first_name"
+			   value="<?php echo $customer['firstName']; ?>">
+      <input type="hidden" name="email"
+			   value="<?php echo $customer['email']; ?>">
+      <input type="hidden" name="city" 
+			   value="<?php echo $customer['city']; ?>">
+      <input type="submit" value="Select">
+  </form></td>
+            </tr>    
+<?php endforeach; ?>
+</table>
 
 </main>
 <?php include '../view/footer.php'; ?>

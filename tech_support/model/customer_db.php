@@ -11,15 +11,15 @@ function get_customers() {
     return $customers;
 }
 
-//Get customer
-function get_customer($customerID) {
+//Get customer from last name search
+function search_customer($lastName) {
     global $db;
     $query = 'SELECT * FROM customers
               WHERE lastName = :lastName';
     $statement = $db->prepare($query);
     $statement->bindValue(':lastName', $lastName);
     $statement->execute();
-    $customer = $statement->fetch();
+    $customer = $statement->fetchALL();
     $statement->closeCursor();
     return $customer;
 
@@ -30,18 +30,27 @@ function show_customer() {
          global $db;
          $query = 'SELECT firstName, email, city 
                    FROM customers
-                   WHERE lastName = :lastName'
+                   WHERE lastName = :lastName';
          $statement = $db->prepare($query);
-         $statement -> bindValue(':lastName,' $lastName);
+         $statement -> bindValue(':lastName', $lastName);
          $statement -> execute();
          $customer -> $statement->fetch();
          $statement -> closerCursor();
 
 }
 
-//Shows customer information
-function select_customer() {
+//Brings to Customer View/Update Page
+function select_customer($customerID) {
          global $db;
+         $query = 'SELECT *
+                   FROM customers
+                   WHERE customerID = :customerID';
+         $statement = $db->prepare($query);
+         $statement -> bindValue(':customer', $customerID);
+         $statement -> execute();
+         $customer -> $statement->fetch();
+         $statement -> closerCursor();
+                   
 //see pg 135
 }
 
@@ -67,5 +76,16 @@ function update_customer() {
     $statement->closeCursor();
 }
 
-
+//Get customer from email
+function search_customer_email($email) {
+    global $db;
+    $query = 'SELECT * FROM customers
+              WHERE email = :email';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':email', $email);
+    $statement->execute();
+    $customer = $statement->fetch();
+    $statement->closeCursor();
+    return $email;
+}
 ?>

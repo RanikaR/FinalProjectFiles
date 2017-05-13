@@ -12,13 +12,13 @@ if ($action == 'list_products') {
     $products = get_products();
     include('product_list.php'); }
  else if ($action == 'delete_product') {
-    $product_code = filter_input(INPUT_POST, 'product_code', 
-            FILTER_VALIDATE_INT);
+    $product_code = filter_input(INPUT_POST, 'product_code');
     if ($product_code == NULL || $product_code == FALSE) {
         $error = "Missing or incorrect product code.";
         include('../errors/error.php');
     } else { 
         delete_product($product_code);
+        header("Location: .");
     }
 } else if ($action == 'show_add_form') {
     $products = get_products();

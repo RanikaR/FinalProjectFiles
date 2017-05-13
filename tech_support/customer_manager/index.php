@@ -2,42 +2,39 @@
 require('../model/database.php');
 require('../model/customer_db.php');
 $action = filter_input(INPUT_POST, 'action');
-if ($action == NULL) {
+if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
-    if ($action == NULL) {
-        $action = 'list_customers';
-    }
-}
-if ($action == 'list_customers') {
-    $products = get_customers();
-    include('customer_list.php'); }
-
-} else if ($action == 'show_add_form') {
-    $products = get_products();
-    include('product_add.php');  
-      
-} else if ($action == 'update_customer') {
-    $customer = update_customer();
-    $name = filter_input(INPUT_POST, 'name');
-    $version = filter_input(INPUT_POST, 'version');
-    $releaseDate = filter_input(INPUT_POST, 'releaseDate');
-    $name = filter_input(INPUT_POST, 'name');
-    $name = filter_input(INPUT_POST, 'name');
-    $name = filter_input(INPUT_POST, 'name');
-    $name = filter_input(INPUT_POST, 'name');
-    $name = filter_input(INPUT_POST, 'name');
-    $name = filter_input(INPUT_POST, 'name');
-    $name = filter_input(INPUT_POST, 'name');
-    if ($product_code == NULL || $product_code == FALSE || $name == NULL || $name == FALSE || $version == NULL || $version == FALSE || $releaseDate == NULL || $releaseDate == FALSE) {
-        $error = "Invalid product data. Check all fields and try again.";
-        include('../errors/error.php');
-    } else { 
-        add_product($product_code, $name, $version, $releaseDate);
-	header("Location: .");
+    if ($action === NULL) {
+        $action = 'customer_list';
     }
     
-} else if ($action == 'list_products') {
-    $products = get_products();
-    include('product_list.php');
-}
+}if ($action == 'customer_list') {
+    include('customer_list.php'); 
+
+} else if ($action == 'search_customer') {
+          $lastName = filter_input(INPUT_POST, 'lastName'); 
+          
+   //add error checker
+        $customers = search_customer($lastName);
+        include('customer_list.php'); 
+          
+} 
+
+          
+/*else if ($action == 'update_customer') {
+          $customer = update_custer();
+          $firstName = filter_input(INPUT_POST, 'first_name');
+          $lastName = filter_input(INPUT_POST, 'last_name');
+          $address = filter_input(INPUT_POST, 'address');
+          $city = filter_input(INPUT_POST, 'city');
+          $state = filter_input(INPUT_POST, 'state');
+          $postalCode = filter_input(INPUT_POST, 'postalCode');
+          $countryCode = filter_input(INPUT_POST, 'countryCode');
+          $phone = filter_input(INPUT_POST, 'phone');
+          $email = filter_input(INPUT_POST, 'email');
+          $password = filter_input(INPUT_POST, 'password');
+
+}*/
+          
+          
 ?>

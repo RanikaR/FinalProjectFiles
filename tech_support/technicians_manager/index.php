@@ -16,16 +16,18 @@ if ($action == 'list_technicians'){
     $technicians = get_technicians();
     include('technician_list.php');
 }
-
 else if ($action == 'delete_technician'){
-    $techID = filter_input(INPUT_POST, 'techID', 
-            FILTER_VALIDATE_INT);
+    $tech_id = filter_input(INPUT_POST, 'tech_id');
+    if ($tech_id == NULL || $tech_id == FALSE) {
+            $error = "Missing or incorrect technician ID.";
             include('../errors/error.php');
-    	delete_technician($techID);
+      } else {
+    	delete_technician($tech_id);
+     header("Location: .");
 }
 
-else if ($action == 'show_add_form'){
-    $techies = get_technician();
+} else if ($action == 'show_add_form'){
+    $technicians = get_technician();
     include('technician_add.php');
 }
 
