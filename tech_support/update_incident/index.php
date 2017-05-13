@@ -7,11 +7,11 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action === NULL) {
-        $action = 'login';
+        $action = 'technician_login';
     }
     
-}if ($action == 'login') {
-    include('login.php'); 
+}if ($action == 'technician_login') {
+    include('technician_login.php'); 
 
 } else if ($action == 'search_customer_email') {
           $email = filter_input(INPUT_POST, 'email'); 
