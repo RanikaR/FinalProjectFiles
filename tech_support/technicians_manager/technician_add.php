@@ -5,12 +5,12 @@
         <input type="hidden" name="action" value="add_technician">
     <div>
         <label>First Name: </label>
-        <input type="text" name="first_name" />       
+        <input type="text" name="firstName" />       
     </div>
     <br>
     <div>
         <label>Last Name: </label>
-        <input type="text" name="last_name" />
+        <input type="text" name="lastName" />
     </div>
     <br>
     <div>

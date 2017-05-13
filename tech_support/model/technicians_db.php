@@ -12,12 +12,12 @@ function get_technicians() {
 }
 
 //Get technician
-function get_technician($tech_id) {
+function get_technician($techID) {
 	global $db;
 	$query = 'SELECT * FROM technicians
 		  WHERE techID = :techID';
 	$statement = $db->prepare($query);
-	$statement -> bindValue(':techID', $tech_id);
+	$statement -> bindValue(':techID', $techID);
 	$statement -> execute();
 	$technician = $statement->fetch();
 	$statement -> closeCursor();
@@ -25,26 +25,26 @@ function get_technician($tech_id) {
 }
 
 //Delete technician from database
-function delete_technician($tech_id) {
+function delete_tech($techID) {
 	global $db;
 	$query = 'DELETE FROM technicians
 		  WHERE techID = :techID';
 	$statement = $db->prepare($query);
-	$statement -> bindValue(':techID', $tech_id);
+	$statement -> bindValue(':techID', $techID);
 	$statement -> execute();
 	$statement -> closeCursor();
 }
 
 //Add technician to database
-function add_technician($first_name, $last_name, $email, $phone, $password) {
+function add_technician($firstName, $lastName, $email, $phone, $password) {
 	global $db;
   $query = 'INSERT INTO technicians
                  (firstName, lastName, email, phone, password)
               VALUES
                  (:firstName, :lastName, :email, :phone, :password)';
 	$statement = $db->prepare($query);
-	$statement -> bindValue(':firstName', $first_name);
-	$statement -> bindValue(':lastName', $last_name);
+	$statement -> bindValue(':firstName', $firstName);
+	$statement -> bindValue(':lastName', $lastName);
 	$statement -> bindValue(':email', $email);
 	$statement -> bindValue(':phone', $phone);
 	$statement -> bindValue(':password', $password);
